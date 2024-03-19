@@ -1,0 +1,23 @@
+.GridContainer {
+    margin: 20px;
+}
+
+.GridForm {
+    margin-bottom: 10px;
+}
+
+.Grid {
+    display: grid;
+    grid-gap: 1px;
+    background-color: white;
+}
+
+.row {
+    display: flex;
+}
+
+.error {
+    color: red;
+    font-size: 14px;
+    max-bottom: 10px;
+}

@@ -1,0 +1,9 @@
+.Box {
+    height: 50px;
+    width: 50px;
+    border: 5px solid grey;
+}
+
+.Alive {
+    background-color: black;
+}
