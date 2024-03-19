@@ -5,7 +5,7 @@ import './Grid.css'
 import './Box.css'
 
 function Grid(props) {
-    const { gridState, updateGridSize } = useContext(GridContext);
+    const { gridState, updateGridSize, resetGrid, progressSimulation } = useContext(GridContext);
     const [height, setHeight] = useState('');
     const [width, setWidth] = useState('');
 
@@ -14,6 +14,14 @@ function Grid(props) {
         updateGridSize(parseInt(height), parseInt(width));
         setHeight('');
         setWidth('');
+    }
+
+    const handleResetGrid = () => {
+        resetGrid();
+    }
+
+    const handleProgressSimulation = () => {
+        progressSimulation();
     }
 
     const gridRows = gridState.map((row, rowIndex) => (
@@ -41,7 +49,11 @@ function Grid(props) {
                 />
                 <button type="submit">Submit</button>
             </form>
-            <div className="Grid">{gridRows}</div>
+            <div className="Grid">{gridRows}
+                <div className="ButtonContainer">
+                    <button onClick={handleResetGrid}>Reset</button>
+                    <button onClick={handleProgressSimulation}>Play</button>
+            </div></div>
         </div>
     )
 }
