@@ -1,4 +1,4 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import { GridContext } from "./GridProvider"
 import Box from './Box'
 import './Grid.css'
@@ -8,6 +8,23 @@ function Grid(props) {
     const { gridState, updateGridSize, resetGrid, progressSimulation } = useContext(GridContext);
     const [height, setHeight] = useState('');
     const [width, setWidth] = useState('');
+    const [autoplayActive, setAutoPlayActive] = useState(false);
+
+    useEffect(() => {
+        let autoplayInterval;
+
+        if (autoplayActive) {
+            // Starts the autoplay
+            autoplayInterval = setInterval(() => {
+                progressSimulation();
+            }, 100); // Sets the speed of the autoplay
+        } else {
+            // Stops the autoplay
+            clearInterval(autoplayInterval);
+        }
+
+        return () => clearInterval(autoplayInterval);
+    }, [autoplayActive, progressSimulation]);
 
     const handleSubmit = (e) => {
         e.preventDefault();
@@ -22,6 +39,10 @@ function Grid(props) {
 
     const handleProgressSimulation = () => {
         progressSimulation();
+    }
+
+    const handleAutoplayClick = () => {
+        setAutoPlayActive((prevAutoplayActive) => !autoplayActive);
     }
 
     const gridRows = gridState.map((row, rowIndex) => (
@@ -49,11 +70,12 @@ function Grid(props) {
                 />
                 <button type="submit">Submit</button>
             </form>
-            <div className="Grid">{gridRows}
-                <div className="ButtonContainer">
-                    <button onClick={handleResetGrid}>Reset</button>
-                    <button onClick={handleProgressSimulation}>Play</button>
-            </div></div>
+            <div className="Grid">{gridRows}</div>
+            <div className="ButtonContainer">
+                    <button className="ButtonSyle" onClick={handleResetGrid}>Reset</button>
+                    <button className="ButtonSyle" onClick={handleProgressSimulation}>Next Frame</button>
+                    <button className="ButtonSyle" onClick={handleAutoplayClick}>Autoplay</button>
+            </div>
         </div>
     )
 }

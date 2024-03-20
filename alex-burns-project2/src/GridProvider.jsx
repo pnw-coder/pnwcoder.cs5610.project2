@@ -37,7 +37,7 @@ function GridProvider(props) {
 
     // Function to update grid size
     const updateGridSize = (height, width) => {
-        if (height < 3 || height > 40 || width < 3 || width > 40) {
+        if (!height || !width || height < 3 || height > 40 || width < 3 || width > 40) {
             setError('Invalid grid size. Height and width must be between 3 and 40');
             return;
         }
