@@ -7,3 +7,23 @@
 .Alive {
     background-color: black;
 }
+
+.Heatmap {
+    background: linear-gradient(to bottom, red, yellow, green, blue);
+}
+
+.Red {
+    background-color: red;
+}
+
+.Yellow {
+    background-color: yellow;
+}
+
+.Green {
+    background-color: green;
+}
+
+.Blue {
+    background-color: blue;
+}

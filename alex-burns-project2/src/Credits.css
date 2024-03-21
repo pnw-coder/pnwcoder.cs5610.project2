@@ -1,0 +1,24 @@
+.CreditsContainer {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: top;
+    height: 100vh;
+    text-align: center;
+    color: #F9F6EE;
+}
+
+.Header {
+    font-size: 45px;
+    font-weight: bold;
+    margin-bottom: 75px;
+}
+
+.Content {
+    margin-bottom: 50px;
+}
+
+.Footer {
+    font-size: 32px;
+    font-weight: bold;
+}

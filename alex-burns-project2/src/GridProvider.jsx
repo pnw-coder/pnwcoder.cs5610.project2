@@ -4,7 +4,21 @@ export const GridContext = createContext();
 
 function GridProvider(props) {
     const [gridState, setGridState] = useState([]);
+    const [livingCellsCount, setLivingCellsCount] = useState(0);
     const [error, setError] = useState('');
+
+    // Function to count living cells
+    const countLivingCells = (grid) => {
+        let count = 0;
+        grid.forEach((row) => {
+            row.forEach((cell) => {
+                if (cell) {
+                    count++;
+                }
+            })
+        })
+        return count;
+    }
 
     const initializeGrid = (height, width) => {
         const gridSize = [];
@@ -28,6 +42,7 @@ function GridProvider(props) {
         }
 
         setGridState(gridSize);
+        setLivingCellsCount(countLivingCells(gridSize));
     }
 
     // Run the initialized function when the component mounts
@@ -43,6 +58,7 @@ function GridProvider(props) {
         }
         initializeGrid(height, width);
         setError('');
+        setLivingCellsCount(countLivingCells(gridSize));
     }
 
     // Function to reset the grid
@@ -50,6 +66,7 @@ function GridProvider(props) {
         //Re-initiate the grid with the same size
         const [currentHeight, currentWidth] = [gridState.length, gridState[0].length];
         initializeGrid(currentHeight, currentWidth);
+        setLivingCellsCount(countLivingCells(gridSize));
     }
 
     // Function to progress the game by one frame 
@@ -78,6 +95,7 @@ function GridProvider(props) {
 
         // Updates the grid state with the new state
         setGridState(newGridState);
+        setLivingCellsCount(countLivingCells(newGridState));
     }
 
     // Helper function to count live neighbors of a cell
@@ -104,7 +122,7 @@ function GridProvider(props) {
     }
 
     return (
-        <GridContext.Provider value={{gridState, setGridState, updateGridSize, resetGrid, progressSimulation}}>
+        <GridContext.Provider value={{gridState, setGridState, updateGridSize, resetGrid, progressSimulation, livingCellsCount, setLivingCellsCount, countLivingCells}}>
             {error && <div className="error">{error}</div>}
             {props.children}
         </GridContext.Provider>

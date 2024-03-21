@@ -3,9 +3,10 @@ import { GridContext } from "./GridProvider"
 import Box from './Box'
 import './Grid.css'
 import './Box.css'
+import './App.css'
 
 function Grid(props) {
-    const { gridState, updateGridSize, resetGrid, progressSimulation } = useContext(GridContext);
+    const { gridState, updateGridSize, resetGrid, progressSimulation, livingCellsCount } = useContext(GridContext);
     const [height, setHeight] = useState('');
     const [width, setWidth] = useState('');
     const [autoplayActive, setAutoPlayActive] = useState(false);
@@ -52,7 +53,7 @@ function Grid(props) {
             ))}
         </div>
     ))
-    
+
     return (
         <div className="GridContainer">
             <form onSubmit={handleSubmit} className="GridForm">
@@ -70,11 +71,12 @@ function Grid(props) {
                 />
                 <button type="submit">Submit</button>
             </form>
+            <div className="LivingCellsCount">Currently Living Cells: {livingCellsCount}</div>
             <div className="Grid">{gridRows}</div>
             <div className="ButtonContainer">
-                    <button className="ButtonSyle" onClick={handleResetGrid}>Reset</button>
-                    <button className="ButtonSyle" onClick={handleProgressSimulation}>Next Frame</button>
-                    <button className="ButtonSyle" onClick={handleAutoplayClick}>Autoplay</button>
+                    <button className="ButtonStyle" onClick={handleResetGrid}>Reset</button>
+                    <button className="ButtonStyle" onClick={handleProgressSimulation}>Next Frame</button>
+                    <button className="ButtonStyle" onClick={handleAutoplayClick}>Autoplay</button>
             </div>
         </div>
     )
