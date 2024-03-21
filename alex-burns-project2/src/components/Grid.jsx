@@ -1,9 +1,11 @@
 import { useContext, useEffect, useState } from "react"
 import { GridContext } from "./GridProvider"
 import Box from './Box'
-import './Grid.css'
-import './Box.css'
-import './App.css'
+import '../styles/Grid.css'
+import '../styles/Box.css'
+import '../styles/App.css'
+import NavBar from "./NavBar"
+import '../styles/NavBar.css'
 
 function Grid(props) {
     const { gridState, updateGridSize, resetGrid, progressSimulation, livingCellsCount } = useContext(GridContext);
@@ -55,28 +57,31 @@ function Grid(props) {
     ))
 
     return (
-        <div className="GridContainer">
-            <form onSubmit={handleSubmit} className="GridForm">
-                <input
-                    type="number"
-                    placeholder="Enter height (3-40)"
-                    value={height}
-                    onChange={(e) => setHeight(e.target.value)}
-                />
-                <input
-                    type="number"
-                    placeholder="Enter width (3-40)"
-                    value={width}
-                    onChange={(e) => setWidth(e.target.value)}
-                />
-                <button type="submit">Submit</button>
-            </form>
-            <div className="LivingCellsCount">Currently Living Cells: {livingCellsCount}</div>
-            <div className="Grid">{gridRows}</div>
-            <div className="ButtonContainer">
+        <div>
+            <NavBar />
+            <div className="GridContainer">
+                <form onSubmit={handleSubmit} className="GridForm">
+                    <input
+                        type="number"
+                        placeholder="Enter height (3-40)"
+                        value={height}
+                        onChange={(e) => setHeight(e.target.value)}
+                    />
+                    <input
+                        type="number"
+                        placeholder="Enter width (3-40)"
+                        value={width}
+                        onChange={(e) => setWidth(e.target.value)}
+                    />
+                    <button type="submit">Submit</button>
+                </form>
+                <div className="LivingCellsCount">Currently Living Cells: {livingCellsCount}</div>
+                <div className="Grid">{gridRows}</div>
+                <div className="ButtonContainer">
                     <button className="ButtonStyle" onClick={handleResetGrid}>Reset</button>
                     <button className="ButtonStyle" onClick={handleProgressSimulation}>Next Frame</button>
                     <button className="ButtonStyle" onClick={handleAutoplayClick}>Autoplay</button>
+                </div>
             </div>
         </div>
     )

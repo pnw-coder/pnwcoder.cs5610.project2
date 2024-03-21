@@ -1,21 +1,17 @@
 import { useContext, useState } from 'react'
 import Box from "./Box"
-import Home from "./Home"
-import Credits from "./Credits"
-import "./Box.css"
+import "../styles/Box.css"
 import GridProvider from './GridProvider'
 import Grid from './Grid'
-import "./App.css"
-import "./Grid.css"
+import "../styles/App.css"
+import "../styles/Grid.css"
 
 function App() {
     return (
         <div>
-            {/* <Home /> */}
-            <Credits />
-            {/* <GridProvider>
+            <GridProvider>
                 <Grid />
-            </GridProvider> */}
+            </GridProvider>
         </div>
     )
 }

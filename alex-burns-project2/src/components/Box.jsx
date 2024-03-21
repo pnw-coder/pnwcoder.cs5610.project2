@@ -1,6 +1,6 @@
 import { useContext } from 'react'
 import { GridContext } from './GridProvider';
-import "./Box.css"
+import "../styles/Box.css"
 
 function Box(props) {
     const { gridState, setGridState, setLivingCellsCount, countLivingCells } = useContext(GridContext);
