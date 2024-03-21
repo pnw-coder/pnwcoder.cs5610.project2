@@ -3,6 +3,7 @@ import "../styles/Credits.css"
 import NavBar from './NavBar'
 import '../styles/NavBar.css'
 
+// Renders the credits component
 function Credits() {
     return (
         <div>

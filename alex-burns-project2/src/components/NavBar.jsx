@@ -1,6 +1,7 @@
 import { NavLink } from 'react-router-dom'
 import '../styles/NavBar.css'
 
+// Uses NavLink to create clickable links that are dispalyed on a navbar for a user to traverse the website
 function NavBar() {
     return (
         <div className="Navbar-Container">

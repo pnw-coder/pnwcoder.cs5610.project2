@@ -2,9 +2,8 @@ import NavBar from './NavBar'
 import '../styles/Home.css'
 import '../styles/NavBar.css'
 
+// Renders the Home component
 function Home() {
-
-
     return (
         <div>
             <NavBar />
